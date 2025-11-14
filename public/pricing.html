@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Luxe Jewelry</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">💍 LUXE JEWELRY</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="tryon.html">Try-On</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="account.html">Account</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Pricing</h1>
+            <p>Transparent pricing for premium jewelry</p>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Earrings</h3>
+                    <div class="price-range">$35 - $65</div>
+                    <ul class="features-list">
+                        <li>✓ Premium materials</li>
+                        <li>✓ Handcrafted</li>
+                        <li>✓ Virtual try-on</li>
+                        <li>✓ Free shipping</li>
+                        <li>✓ 30-day returns</li>
+                    </ul>
+                    <button class="btn btn-primary">Shop Now</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="badge">Most Popular</div>
+                    <h3>Necklaces</h3>
+                    <div class="price-range">$75 - $199</div>
+                    <ul class="features-list">
+                        <li>✓ Premium materials</li>
+                        <li>✓ Handcrafted</li>
+                        <li>✓ Virtual try-on</li>
+                        <li>✓ Free shipping</li>
+                        <li>✓ 30-day returns</li>
+                    </ul>
+                    <button class="btn btn-primary">Shop Now</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Rings</h3>
+                    <div class="price-range">$149 - $399</div>
+                    <ul class="features-list">
+                        <li>✓ Premium materials</li>
+                        <li>✓ Handcrafted</li>
+                        <li>✓ Virtual try-on</li>
+                        <li>✓ Free shipping</li>
+                        <li>✓ 30-day returns</li>
+                    </ul>
+                    <button class="btn btn-primary">Shop Now</button>
+                </div>
+            </div>
+
+            <div class="shipping-info">
+                <h2>Shipping & Returns</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>🚚 Free Shipping</h4>
+                        <p>On all orders over $100</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>↩️ 30-Day Returns</h4>
+                        <p>Full refund if not satisfied</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>💳 Secure Payment</h4>
+                        <p>All major credit cards accepted</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>🔒 Insured Shipping</h4>
+                        <p>Your jewelry is protected</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <p>Premium jewelry with virtual try-on technology</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@luxejewelry.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Luxe Jewelry. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .pricing-section {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: #d4af37;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #d4af37, #aa8c2c);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .pricing-card h3 {
+            color: #d4af37;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .price-range {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .shipping-info {
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .shipping-info h2 {
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .info-card h4 {
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Jewelry Images</title>
+</head>
+<body>
+    <h1>Jewelry Image Generator</h1>
+    <p>This page generates placeholder jewelry images. Open browser console to see status.</p>
+    
+    <script>
+        // Create canvas-based jewelry images and convert to PNG
+        function generateJewelryImages() {
+            const images = {
+                earrings: generateEarring(),
+                necklaces: generateNecklace(),
+                rings: generateRing(),
+                chains: generateChain()
+            };
+            
+            // Log data URLs for copying
+            console.log('Earring PNG:', images.earrings);
+            console.log('Necklace PNG:', images.necklaces);
+            console.log('Ring PNG:', images.rings);
+            console.log('Chain PNG:', images.chains);
+            
+            // Display images
+            Object.entries(images).forEach(([name, dataUrl]) => {
+                const img = document.createElement('img');
+                img.src = dataUrl;
+                img.style.border = '1px solid #ccc';
+                img.style.margin = '10px';
+                img.style.width = '100px';
+                img.style.height = '100px';
+                img.title = name;
+                document.body.appendChild(img);
+            });
+        }
+        
+        function generateEarring() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 100;
+            canvas.height = 100;
+            const ctx = canvas.getContext('2d');
+            
+            // Transparent background
+            ctx.clearRect(0, 0, 100, 100);
+            
+            // Gold earring
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(50, 40, 15, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Gem
+            ctx.fillStyle = '#FF1493';
+            ctx.beginPath();
+            ctx.arc(50, 40, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Highlight
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.beginPath();
+            ctx.arc(45, 35, 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            return canvas.toDataURL('image/png');
+        }
+        
+        function generateNecklace() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 150;
+            canvas.height = 100;
+            const ctx = canvas.getContext('2d');
+            
+            ctx.clearRect(0, 0, 150, 100);
+            
+            // Chain curve
+            ctx.strokeStyle = '#FFD700';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(20, 20);
+            ctx.quadraticCurveTo(75, 60, 130, 20);
+            ctx.stroke();
+            
+            // Pendant
+            ctx.fillStyle = '#FF1493';
+            ctx.beginPath();
+            ctx.arc(75, 50, 12, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Highlight
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.beginPath();
+            ctx.arc(70, 45, 5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            return canvas.toDataURL('image/png');
+        }
+        
+        function generateRing() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 100;
+            canvas.height = 100;
+            const ctx = canvas.getContext('2d');
+            
+            ctx.clearRect(0, 0, 100, 100);
+            
+            // Ring band
+            ctx.strokeStyle = '#FFD700';
+            ctx.lineWidth = 8;
+            ctx.beginPath();
+            ctx.arc(50, 50, 25, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Gem
+            ctx.fillStyle = '#FF1493';
+            ctx.beginPath();
+            ctx.arc(50, 30, 12, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Highlight
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.beginPath();
+            ctx.arc(45, 25, 5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            return canvas.toDataURL('image/png');
+        }
+        
+        function generateChain() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 150;
+            canvas.height = 100;
+            const ctx = canvas.getContext('2d');
+            
+            ctx.clearRect(0, 0, 150, 100);
+            
+            // Chain links
+            ctx.strokeStyle = '#FFD700';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(10, 50);
+            
+            for (let i = 0; i < 8; i++) {
+                const x = 10 + (i * 18);
+                ctx.lineTo(x + 8, 50);
+                ctx.arc(x + 8, 50, 5, 0, Math.PI * 2);
+            }
+            
+            ctx.lineTo(140, 50);
+            ctx.stroke();
+            
+            return canvas.toDataURL('image/png');
+        }
+        
+        // Generate on load
+        window.addEventListener('load', generateJewelryImages);
+    </script>
+</body>
+</html>
+

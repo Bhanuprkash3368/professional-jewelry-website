@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Luxe Jewelry</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">💍 LUXE JEWELRY</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="tryon.html">Try-On</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="account.html">Account</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Customer Gallery</h1>
+            <p>See how our customers look with our jewelry</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image">📸</div>
+                    <p>Customer Try-On 1</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">📸</div>
+                    <p>Customer Try-On 2</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">📸</div>
+                    <p>Customer Try-On 3</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">📸</div>
+                    <p>Customer Try-On 4</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">📸</div>
+                    <p>Customer Try-On 5</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">📸</div>
+                    <p>Customer Try-On 6</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <p>Premium jewelry with virtual try-on technology</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@luxejewelry.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Luxe Jewelry. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .gallery-section {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery-image {
+            width: 100%;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            background: linear-gradient(135deg, #d4af37, #aa8c2c);
+        }
+
+        .gallery-item p {
+            padding: 15px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

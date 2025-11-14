@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Luxury Jewelry Collection</title>
+    <link rel="stylesheet" href="css/style-new.css">
+    <style>
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-gold);
+            color: var(--black);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .product-card {
+            background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(15,15,15,0.9) 100%);
+            border: 2px solid var(--primary-gold);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(170,140,44,0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-category {
+            color: var(--light-gold);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .product-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-btn {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+            color: var(--black);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .product-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">💎 LUXURY JEWELRY</div>
+            <ul class="nav-links">
+                <li><a href="index-new.html">Home</a></li>
+                <li><a href="products-new.html">Products</a></li>
+                <li><a href="tryon.html">Try-On</a></li>
+                <li><a href="about-new.html">About</a></li>
+                <li><a href="contact-new.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <section>
+        <div class="container">
+            <h2>Our Collection</h2>
+            
+            <div class="filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Earrings</button>
+                <button class="filter-btn">Necklaces</button>
+                <button class="filter-btn">Rings</button>
+                <button class="filter-btn">Bracelets</button>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Earrings 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop" alt="Gold Drop Earrings">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">EARRINGS</div>
+                        <div class="product-name">Gold Drop Earrings</div>
+                        <div class="product-price">$299</div>
+                        <div class="product-description">Elegant gold drop earrings with premium finish</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Necklace 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop" alt="Gold Chain Necklace">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">NECKLACES</div>
+                        <div class="product-name">Gold Chain Necklace</div>
+                        <div class="product-price">$499</div>
+                        <div class="product-description">Classic gold chain with exquisite craftsmanship</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Ring 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1515562141207-6811bcb33ce7?w=400&h=400&fit=crop" alt="Diamond Ring">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">RINGS</div>
+                        <div class="product-name">Diamond Solitaire Ring</div>
+                        <div class="product-price">$1,299</div>
+                        <div class="product-description">Stunning diamond solitaire in 18K gold</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Bracelet 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop" alt="Gold Bracelet">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">BRACELETS</div>
+                        <div class="product-name">Gold Tennis Bracelet</div>
+                        <div class="product-price">$799</div>
+                        <div class="product-description">Luxurious tennis bracelet with brilliant diamonds</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Pearl Earrings -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop" alt="Pearl Earrings">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">EARRINGS</div>
+                        <div class="product-name">Pearl Stud Earrings</div>
+                        <div class="product-price">$399</div>
+                        <div class="product-description">Classic pearl studs with gold settings</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Pendant -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop" alt="Diamond Pendant">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">NECKLACES</div>
+                        <div class="product-name">Diamond Pendant</div>
+                        <div class="product-price">$899</div>
+                        <div class="product-description">Exquisite diamond pendant on gold chain</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Earrings 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop" alt="Diamond Stud Earrings">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">EARRINGS</div>
+                        <div class="product-name">Diamond Stud Earrings</div>
+                        <div class="product-price">$599</div>
+                        <div class="product-description">Brilliant diamond studs in white gold</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Necklace 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1515562141207-6811bcb33ce7?w=400&h=400&fit=crop" alt="Pearl Necklace">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">NECKLACES</div>
+                        <div class="product-name">Pearl Necklace</div>
+                        <div class="product-price">$699</div>
+                        <div class="product-description">Elegant pearl necklace with gold clasp</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Ring 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop" alt="Emerald Ring">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">RINGS</div>
+                        <div class="product-name">Emerald Ring</div>
+                        <div class="product-price">$1,099</div>
+                        <div class="product-description">Stunning emerald with diamond accents</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Bracelet 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop" alt="Gold Bangle">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">BRACELETS</div>
+                        <div class="product-name">Gold Bangle Bracelet</div>
+                        <div class="product-price">$549</div>
+                        <div class="product-description">Classic gold bangle with intricate design</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Earrings 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop" alt="Sapphire Earrings">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">EARRINGS</div>
+                        <div class="product-name">Sapphire Earrings</div>
+                        <div class="product-price">$799</div>
+                        <div class="product-description">Royal blue sapphire with gold setting</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Necklace 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop" alt="Rose Gold Necklace">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">NECKLACES</div>
+                        <div class="product-name">Rose Gold Necklace</div>
+                        <div class="product-price">$449</div>
+                        <div class="product-description">Delicate rose gold chain with pendant</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Luxury Jewelry. All rights reserved.</p>
+            <p>Crafted with elegance and precision</p>
+        </div>
+    </footer>
+</body>
+</html>
+

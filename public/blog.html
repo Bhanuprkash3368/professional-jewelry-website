@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Luxe Jewelry</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">💍 LUXE JEWELRY</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="tryon.html">Try-On</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="account.html">Account</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Jewelry Blog</h1>
+            <p>Tips, trends, and stories from our jewelry experts</p>
+        </div>
+    </section>
+
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">📝</div>
+                    <h3>How to Choose the Perfect Earrings</h3>
+                    <p class="blog-date">December 15, 2024</p>
+                    <p>Learn how to select earrings that complement your face shape and personal style. Our experts share tips for finding your perfect match.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📝</div>
+                    <h3>Necklace Trends for 2024</h3>
+                    <p class="blog-date">December 10, 2024</p>
+                    <p>Discover the hottest necklace trends this season. From layered chains to statement pendants, we cover all the latest styles.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📝</div>
+                    <h3>Ring Care and Maintenance</h3>
+                    <p class="blog-date">December 5, 2024</p>
+                    <p>Keep your rings looking beautiful for years to come. Learn our expert tips for cleaning and maintaining your precious jewelry.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📝</div>
+                    <h3>Virtual Try-On Technology Explained</h3>
+                    <p class="blog-date">November 28, 2024</p>
+                    <p>Understand how our advanced face detection technology works and how it helps you find the perfect jewelry online.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📝</div>
+                    <h3>Jewelry for Every Occasion</h3>
+                    <p class="blog-date">November 20, 2024</p>
+                    <p>From casual to formal, we guide you through selecting the right jewelry for any event or occasion.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📝</div>
+                    <h3>Sustainable Jewelry Choices</h3>
+                    <p class="blog-date">November 15, 2024</p>
+                    <p>Learn about our commitment to ethical sourcing and sustainable practices in the jewelry industry.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <p>Premium jewelry with virtual try-on technology</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@luxejewelry.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Luxe Jewelry. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .blog-section {
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .blog-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            background: linear-gradient(135deg, #d4af37, #aa8c2c);
+        }
+
+        .blog-card h3 {
+            color: #333;
+            padding: 20px 20px 10px;
+            font-size: 18px;
+        }
+
+        .blog-date {
+            color: #d4af37;
+            font-size: 12px;
+            padding: 0 20px;
+            font-weight: 600;
+        }
+
+        .blog-card p {
+            color: #666;
+            padding: 10px 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #d4af37;
+            text-decoration: none;
+            padding: 0 20px 20px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            color: #aa8c2c;
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

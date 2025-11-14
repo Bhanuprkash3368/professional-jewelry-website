@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Luxury Jewelry</title>
+    <link rel="stylesheet" href="css/style-new.css">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, rgba(10,10,10,0.8) 0%, rgba(15,15,15,0.8) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><pattern id="gold" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="2" fill="%23d4af37" opacity="0.15"/></pattern></defs><rect width="1200" height="400" fill="url(%23gold)"/></svg>');
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            color: var(--primary-gold);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-hero p {
+            color: var(--light-gold);
+            font-size: 1.1rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .value-box {
+            background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(26,26,26,0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23d4af37" opacity="0.08"/></svg>');
+            background-size: cover;
+            border: 2px solid var(--primary-gold);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .value-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(170,140,44,0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .value-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+            border-color: var(--light-gold);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .value-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .value-box h3 {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .value-box p {
+            color: var(--text-light);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .story-section {
+            background: linear-gradient(135deg, rgba(26,26,26,0.5) 0%, rgba(15,15,15,0.5) 100%);
+            border: 2px solid var(--primary-gold);
+            border-radius: 10px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .story-section h2 {
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-section p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .team-member {
+            background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(15,15,15,0.9) 100%);
+            border: 2px solid var(--primary-gold);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+        
+        .team-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+        }
+        
+        .team-name {
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: var(--light-gold);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .team-bio {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">💎 LUXURY JEWELRY</div>
+            <ul class="nav-links">
+                <li><a href="index-new.html">Home</a></li>
+                <li><a href="products-new.html">Products</a></li>
+                <li><a href="tryon.html">Try-On</a></li>
+                <li><a href="about-new.html">About</a></li>
+                <li><a href="contact-new.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Our Legacy</h1>
+            <p>Crafting timeless elegance since 1995</p>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section>
+        <div class="container">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-box">
+                    <div class="value-icon">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=100&h=100&fit=crop" alt="Quality">
+                    </div>
+                    <h3>Quality</h3>
+                    <p>We use only the finest materials and employ master craftsmen to create jewelry that lasts generations</p>
+                </div>
+
+                <div class="value-box">
+                    <div class="value-icon">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=100&h=100&fit=crop" alt="Authenticity">
+                    </div>
+                    <h3>Authenticity</h3>
+                    <p>Every piece is certified and comes with a guarantee of authenticity and quality assurance</p>
+                </div>
+
+                <div class="value-box">
+                    <div class="value-icon">
+                        <img src="https://images.unsplash.com/photo-1515562141207-6811bcb33ce7?w=100&h=100&fit=crop" alt="Ethics">
+                    </div>
+                    <h3>Ethics</h3>
+                    <p>We source materials responsibly and maintain ethical practices throughout our supply chain</p>
+                </div>
+
+                <div class="value-box">
+                    <div class="value-icon">
+                        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=100&h=100&fit=crop" alt="Innovation">
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We blend traditional craftsmanship with modern technology for unique designs</p>
+                </div>
+
+                <div class="value-box">
+                    <div class="value-icon">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=100&h=100&fit=crop" alt="Customer Care">
+                    </div>
+                    <h3>Customer Care</h3>
+                    <p>Your satisfaction is our priority with 24/7 support and lifetime warranty</p>
+                </div>
+
+                <div class="value-box">
+                    <div class="value-icon">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=100&h=100&fit=crop" alt="Excellence">
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>Award-winning designs recognized globally for their beauty and craftsmanship</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section>
+        <div class="container">
+            <div class="story-section">
+                <h2>Our Story</h2>
+                <p>Founded in 1995, Luxury Jewelry began as a small atelier with a passion for creating exquisite pieces. What started as a dream has grown into a globally recognized brand trusted by thousands of customers worldwide.</p>
+                <p>Our master craftsmen bring decades of experience to every creation, ensuring that each piece meets our rigorous standards of excellence. We believe that jewelry is more than just an accessory—it's a reflection of personal style and a celebration of life's precious moments.</p>
+                <p>Today, we continue to innovate while honoring the traditions that make our jewelry timeless. From engagement rings to statement necklaces, every piece tells a story of dedication, artistry, and love.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section>
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=250&fit=crop" alt="Michael Sterling">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Michael Sterling</div>
+                        <div class="team-role">Founder & CEO</div>
+                        <div class="team-bio">30+ years in luxury jewelry with a passion for excellence. Michael founded Luxury Jewelry with a vision to create timeless pieces that celebrate life's precious moments. His dedication to quality and innovation has made our brand a global leader in luxury jewelry.</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=250&fit=crop" alt="Sarah Diamond">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Sarah Diamond</div>
+                        <div class="team-role">Chief Designer</div>
+                        <div class="team-bio">Award-winning designer with 15 years of experience creating timeless pieces. Sarah's innovative designs blend classic elegance with contemporary aesthetics, earning her recognition from prestigious jewelry design institutions worldwide.</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=250&fit=crop" alt="James Goldsmith">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">James Goldsmith</div>
+                        <div class="team-role">Master Craftsman</div>
+                        <div class="team-bio">Expert artisan with 25 years of craftsmanship expertise. James brings traditional techniques together with modern precision, ensuring every piece meets our exacting standards of excellence and beauty.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Luxury Jewelry. All rights reserved.</p>
+            <p>Crafted with elegance and precision</p>
+        </div>
+    </footer>
+</body>
+</html>
+
