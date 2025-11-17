@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Try-On - Luxe Jewelry</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Three.js for 3D Rendering -->
+    <script async src="https://cdn.jsdelivr.net/npm/three@r128/build/three.min.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/three@r128/examples/js/loaders/GLTFLoader.js"></script>
+
+    <!-- MediaPipe -->
     <script async src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <script async src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
     <script async src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
@@ -300,7 +306,10 @@
     </style>
 
     <script src="js/main.js"></script>
-    <script src="js/jewelry-overlay.js"></script>
+    <script type="module">
+        import JewelryTryOn from './js/jewelry-overlay.js';
+        window.jewelryApp = new JewelryTryOn();
+    </script>
 </body>
 </html>
 

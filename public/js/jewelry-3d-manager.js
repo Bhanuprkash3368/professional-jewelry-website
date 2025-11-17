@@ -1,4 +1,5 @@
 import Jewelry3DRenderer from './jewelry-3d-renderer.js';
+import ModelLoaderHelper from './model-loader-helper.js';
 
 /**
  * Professional 3D Jewelry Manager
@@ -9,6 +10,7 @@ class Jewelry3DManager {
         this.renderer = null;
         this.currentJewelryType = null;
         this.landmarks = null;
+        this.modelLoader = new ModelLoaderHelper();
         
         // Better landmarks (from professional systems)
         this.LANDMARKS = {
@@ -56,18 +58,35 @@ class Jewelry3DManager {
             console.error('❌ Renderer not initialized');
             return;
         }
-        
+
         const models = this.modelPaths[jewelryType];
         if (!models) {
             console.error(`❌ Unknown jewelry type: ${jewelryType}`);
             return;
         }
-        
+
         try {
             for (const [name, path] of Object.entries(models)) {
-                await this.renderer.loadModel(path, name);
+                // Use helper to load with fallback to placeholder
+                const model = await this.modelLoader.loadModelWithFallback(
+                    path,
+                    name,
+                    jewelryType.slice(0, -1)  // Remove 's' from plural
+                );
+
+                if (model) {
+                    this.renderer.models[name] = model;
+                }
             }
-            console.log(`✅ Loaded all ${jewelryType} models`);
+
+            // Check if any models failed
+            const failedModels = this.modelLoader.getFailedModels();
+            if (failedModels.length > 0) {
+                console.warn(`⚠️ Using placeholder models for: ${failedModels.join(', ')}`);
+                console.log('📥 To use real models, download from: https://sketchfab.com/');
+            } else {
+                console.log(`✅ Loaded all ${jewelryType} models`);
+            }
         } catch (error) {
             console.error(`❌ Error loading ${jewelryType} models:`, error);
         }
