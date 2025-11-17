@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Jewelry Gallery - Try On 3D Models</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .jewelry-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .jewelry-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #667eea;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .card-description {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .price {
+            font-size: 1.4em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 0.9em;
+        }
+
+        .reviews {
+            color: #999;
+            font-size: 0.8em;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-tryon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-tryon:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-details {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-details:hover {
+            background: #e0e0e0;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ Professional Jewelry Gallery</h1>
+            <p class="subtitle">Try on 3D jewelry models in real-time with AR technology</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Premium Jewelry Items</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Jewelry Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4.8★</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1500+</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">👂 Earrings Collection</h2>
+        <div class="gallery" id="earrings-gallery"></div>
+
+        <h2 class="section-title">💎 Necklaces Collection</h2>
+        <div class="gallery" id="necklaces-gallery"></div>
+
+        <h2 class="section-title">💍 Rings Collection</h2>
+        <div class="gallery" id="rings-gallery"></div>
+
+        <footer>
+            <p>&copy; 2024 Professional Jewelry Try-On. All rights reserved.</p>
+            <p>Powered by Three.js 3D Technology</p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import JewelryCatalog from './js/jewelry-catalog.js';
+
+        const catalog = new JewelryCatalog();
+        const items = catalog.getAllItems();
+
+        function createCard(item) {
+            return `
+                <div class="jewelry-card">
+                    <div class="card-image">
+                        ${item.id.includes('earring') ? '👂' : item.id.includes('necklace') ? '💎' : '💍'}
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">${item.name}</div>
+                        <div class="card-description">${item.description}</div>
+                        <div class="card-meta">
+                            <div class="price">${item.price}</div>
+                            <div>
+                                <div class="rating">⭐ ${item.rating}</div>
+                                <div class="reviews">${item.reviews} reviews</div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-tryon" onclick="tryOn('${item.id}')">Try On</button>
+                            <button class="btn btn-details" onclick="viewDetails('${item.id}')">Details</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGallery(type, containerId) {
+            const container = document.getElementById(containerId);
+            const typeItems = items[type];
+            container.innerHTML = typeItems.map(createCard).join('');
+        }
+
+        window.tryOn = function(itemId) {
+            window.location.href = `tryon.html?item=${itemId}`;
+        };
+
+        window.viewDetails = function(itemId) {
+            alert(`Details for ${itemId}\n\nRedirecting to product page...`);
+        };
+
+        renderGallery('earrings', 'earrings-gallery');
+        renderGallery('necklaces', 'necklaces-gallery');
+        renderGallery('rings', 'rings-gallery');
+    </script>
+</body>
+</html>
+
