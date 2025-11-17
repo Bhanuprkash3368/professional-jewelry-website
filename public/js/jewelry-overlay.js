@@ -1,14 +1,22 @@
-// Professional Jewelry Try-On with Real Image Overlay
-// Based on proven working code from inhouse-tryon/app.js
+// Professional Jewelry Try-On with 3D Models
+// Uses Three.js for realistic 3D jewelry rendering
+// Based on professional systems: Snapchat Lens Studio, Lenskart, MirrAR
+
+import Jewelry3DManager from './jewelry-3d-manager.js';
 
 class JewelryTryOn {
     constructor() {
         console.log('🏗️ JewelryTryOn constructor started...');
-        
+
+        // 3D Jewelry Manager
+        this.jewelry3DManager = new Jewelry3DManager();
+        this.use3DModels = true; // Enable 3D rendering
+
         // DOM Elements
         this.webcam = document.getElementById('videoElement');
         this.overlayCanvas = document.getElementById('overlayCanvas');
         this.previewCanvas = document.getElementById('previewCanvas');
+        this.canvas3DContainer = document.getElementById('canvas3DContainer') || this.createCanvas3DContainer();
         
         if (!this.webcam || !this.overlayCanvas || !this.previewCanvas) {
             console.error('❌ Critical DOM elements missing');
@@ -53,15 +61,35 @@ class JewelryTryOn {
         this.init();
     }
     
+    createCanvas3DContainer() {
+        const container = document.createElement('div');
+        container.id = 'canvas3DContainer';
+        container.style.position = 'fixed';
+        container.style.top = '0';
+        container.style.left = '0';
+        container.style.width = '100%';
+        container.style.height = '100%';
+        container.style.zIndex = '10';
+        container.style.pointerEvents = 'none';
+        document.body.appendChild(container);
+        return container;
+    }
+
     async init() {
         try {
             console.log('🚀 Initializing JewelryTryOn application...');
-            
+
             this.setupEventListeners();
             await this.loadAllJewelryCollections();
             this.createJewelryGrid();
             await this.initializeMediaPipeModels();
-            
+
+            // Initialize 3D jewelry manager
+            if (this.use3DModels) {
+                await this.jewelry3DManager.init(this.canvas3DContainer);
+                console.log('✅ 3D Jewelry Manager initialized');
+            }
+
             console.log('✅ JewelryTryOn application initialized successfully!');
             this.showStatus('✅ Application ready! Select jewelry and start camera.', 'success');
         } catch (error) {
@@ -219,11 +247,26 @@ class JewelryTryOn {
         this.selectedJewelry = null;
         this.createJewelryGrid();
 
+        // Load 3D models for the new jewelry type
+        if (this.use3DModels) {
+            this.jewelry3DManager.loadJewelryModels(type).catch(err => {
+                console.warn('⚠️ Could not load 3D models:', err);
+            });
+        }
+
         // Auto-select first item after creating grid
         setTimeout(() => {
             const firstItem = document.querySelector('.jewelry-item');
             if (firstItem && this.jewelryCollections[type].items.length > 0) {
-                this.selectJewelry(this.jewelryCollections[type].items[0], firstItem);
+                const firstJewelry = this.jewelryCollections[type].items[0];
+                this.selectJewelry(firstJewelry, firstItem);
+
+                // Switch to first 3D model
+                if (this.use3DModels) {
+                    const modelName = Object.keys(this.jewelry3DManager.modelPaths[type])[0];
+                    this.jewelry3DManager.switchJewelryType(type, modelName);
+                }
+
                 console.log(`✅ Auto-selected first ${type} item`);
             }
         }, 50);
@@ -370,6 +413,11 @@ class JewelryTryOn {
         if (results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0) {
             const landmarks = results.multiFaceLandmarks[0];
             this.detectedLandmarks = landmarks;
+
+            // Update 3D jewelry position
+            if (this.use3DModels && (this.currentJewelryType === 'earrings' || this.currentJewelryType === 'necklaces')) {
+                this.jewelry3DManager.updateJewelryPosition(landmarks);
+            }
 
             // Always redraw if we're using face mesh jewelry types
             if (this.currentJewelryType === 'earrings' || this.currentJewelryType === 'necklaces') {
