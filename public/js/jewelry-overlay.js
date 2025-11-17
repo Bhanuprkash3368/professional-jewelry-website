@@ -202,6 +202,14 @@ class JewelryTryOn {
         document.querySelectorAll('.tab-btn').forEach(tab => tab.classList.remove('active'));
         document.querySelector(`[data-category="${type}"]`).classList.add('active');
 
+        // Reset processing flag to allow new jewelry type to process
+        this.isProcessing = false;
+
+        // Clear old landmarks
+        this.detectedLandmarks = null;
+        this.detectedHandLandmarks = null;
+        this.detectedPoseLandmarks = null;
+
         this.currentJewelryType = type;
         this.selectedJewelry = null;
         this.createJewelryGrid();
@@ -350,54 +358,81 @@ class JewelryTryOn {
         if (results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0) {
             const landmarks = results.multiFaceLandmarks[0];
             this.detectedLandmarks = landmarks;
-            
-            if ((this.currentJewelryType === 'earrings' || this.currentJewelryType === 'necklaces') && this.selectedJewelry) {
+
+            // Always redraw if we're using face mesh jewelry types
+            if (this.currentJewelryType === 'earrings' || this.currentJewelryType === 'necklaces') {
                 this.drawJewelryOnLiveCamera();
+            }
+        } else {
+            // Clear landmarks if no face detected
+            this.detectedLandmarks = null;
+            if (this.currentJewelryType === 'earrings' || this.currentJewelryType === 'necklaces') {
+                this.overlayCtx.clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height);
             }
         }
     }
-    
+
     onHandsResults(results) {
         if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
             this.detectedHandLandmarks = results.multiHandLandmarks;
-            
-            if (this.currentJewelryType === 'rings' && this.selectedJewelry) {
+
+            // Always redraw if we're using hand jewelry types
+            if (this.currentJewelryType === 'rings') {
                 this.drawJewelryOnLiveCamera();
+            }
+        } else {
+            // Clear landmarks if no hands detected
+            this.detectedHandLandmarks = null;
+            if (this.currentJewelryType === 'rings') {
+                this.overlayCtx.clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height);
             }
         }
     }
-    
+
     onPoseResults(results) {
         if (results.poseLandmarks) {
             this.detectedPoseLandmarks = results.poseLandmarks;
-            
-            if (this.currentJewelryType === 'chains' && this.selectedJewelry) {
+
+            // Always redraw if we're using pose jewelry types
+            if (this.currentJewelryType === 'chains') {
                 this.drawJewelryOnLiveCamera();
+            }
+        } else {
+            // Clear landmarks if no pose detected
+            this.detectedPoseLandmarks = null;
+            if (this.currentJewelryType === 'chains') {
+                this.overlayCtx.clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height);
             }
         }
     }
     
     drawJewelryOnLiveCamera() {
+        // Always clear the overlay canvas
         this.overlayCtx.clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height);
+
+        // Only draw if we have selected jewelry
+        if (!this.selectedJewelry) {
+            return;
+        }
 
         switch (this.currentJewelryType) {
             case 'earrings':
-                if (this.detectedLandmarks && this.selectedJewelry) {
+                if (this.detectedLandmarks) {
                     this.drawEarrings(this.overlayCtx, this.detectedLandmarks, this.overlayCanvas.width, this.overlayCanvas.height);
                 }
                 break;
             case 'necklaces':
-                if (this.detectedLandmarks && this.selectedJewelry) {
+                if (this.detectedLandmarks) {
                     this.drawNecklaces(this.overlayCtx, this.detectedLandmarks, this.overlayCanvas.width, this.overlayCanvas.height);
                 }
                 break;
             case 'rings':
-                if (this.detectedHandLandmarks && this.selectedJewelry) {
+                if (this.detectedHandLandmarks) {
                     this.drawRings(this.overlayCtx, this.detectedHandLandmarks, this.overlayCanvas.width, this.overlayCanvas.height);
                 }
                 break;
             case 'chains':
-                if (this.detectedPoseLandmarks && this.selectedJewelry) {
+                if (this.detectedPoseLandmarks) {
                     this.drawChains(this.overlayCtx, this.detectedPoseLandmarks, this.overlayCanvas.width, this.overlayCanvas.height);
                 }
                 break;

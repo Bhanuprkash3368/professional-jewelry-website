@@ -1,0 +1,142 @@
+{
+  "jewelryTryOn": {
+    "metadata": {
+      "framework": "MediaPipe FaceMesh",
+      "totalLandmarks": 468,
+      "version": "1.0",
+      "lastUpdated": "2025-11-17"
+    },
+    "jewelryTypes": {
+      "earrings": {
+        "status": "active",
+        "landmarks": {
+          "left": [132, 127, 234],
+          "right": [361, 356, 454]
+        },
+        "scale": { "min": 0.9, "max": 1.1 },
+        "offset": { "x": 0, "y": 0 },
+        "opacity": 0.9,
+        "description": "Ear lobe jewelry"
+      },
+      "necklace": {
+        "status": "active",
+        "landmarks": {
+          "center": 152,
+          "left": 132,
+          "right": 361
+        },
+        "scale": { "min": 0.9, "max": 1.1 },
+        "offset": { "x": 0, "y": 0.8 },
+        "opacity": 0.9,
+        "description": "Neck jewelry"
+      },
+      "forehead": {
+        "status": "ready",
+        "landmarks": {
+          "center": [10, 338, 297],
+          "mid": [9, 151, 197],
+          "left": [103, 67, 109],
+          "right": [332, 297, 334]
+        },
+        "scale": { "min": 1.0, "max": 1.2 },
+        "offset": { "x": 0, "y": -0.5 },
+        "description": "Maang Tikka / Bindi"
+      },
+      "nose": {
+        "status": "ready",
+        "landmarks": {
+          "tip": 1,
+          "left": 98,
+          "right": 327,
+          "bridge": [6, 195, 5]
+        },
+        "scale": { "min": 0.5, "max": 0.8 },
+        "offset": { "x": 0, "y": 0 },
+        "description": "Nose Pin / Nose Ring"
+      },
+      "chin": {
+        "status": "ready",
+        "landmarks": {
+          "center": 152,
+          "left": 148,
+          "right": 176
+        },
+        "scale": { "min": 1.0, "max": 1.3 },
+        "offset": { "x": 0, "y": 0.5 },
+        "description": "Chin Chain / Beard Ornament"
+      },
+      "cheek": {
+        "status": "ready",
+        "landmarks": {
+          "left": { "upper": [50, 187], "mid": 205, "lower": 147 },
+          "right": { "upper": [280, 411], "mid": 425, "lower": 377 }
+        },
+        "scale": { "min": 0.8, "max": 1.0 },
+        "offset": { "x": 0, "y": 0 },
+        "description": "Cheek Jewelry"
+      },
+      "eyebrow": {
+        "status": "ready",
+        "landmarks": {
+          "left": { "center": 70, "start": 105, "end": 46 },
+          "right": { "center": 300, "start": 334, "end": 276 }
+        },
+        "scale": { "min": 0.6, "max": 0.9 },
+        "offset": { "x": 0, "y": -0.3 },
+        "description": "Eyebrow Jewelry"
+      },
+      "temple": {
+        "status": "ready",
+        "landmarks": {
+          "left": [127, 234, 139],
+          "right": [356, 454, 365]
+        },
+        "scale": { "min": 1.0, "max": 1.2 },
+        "offset": { "x": 0, "y": 0 },
+        "description": "Temple / Jhumar / Passa"
+      },
+      "ring": {
+        "status": "active",
+        "landmarks": {
+          "thumb": [1, 2, 3, 4],
+          "index": [5, 6, 7, 8],
+          "middle": [9, 10, 11, 12],
+          "ring": [13, 14, 15, 16],
+          "pinky": [17, 18, 19, 20]
+        },
+        "scale": { "min": 0.9, "max": 1.1 },
+        "offset": { "x": 0, "y": 0 },
+        "description": "Hand Ring"
+      }
+    },
+    "technologyStack": {
+      "threeJS": {
+        "status": "ready",
+        "features": ["3D rendering", "materials", "lighting", "animation"]
+      },
+      "webAR": {
+        "status": "active",
+        "features": ["real-time overlay", "no app needed", "mobile friendly"]
+      },
+      "mediaPipe": {
+        "status": "active",
+        "models": {
+          "faceMesh": { "landmarks": 468, "status": "active" },
+          "hand": { "points": 21, "status": "active" },
+          "pose": { "points": 33, "status": "active" },
+          "finger": { "status": "active" }
+        }
+      },
+      "openCV": {
+        "status": "ready",
+        "features": ["image processing", "face detection", "edge detection"]
+      }
+    },
+    "smoothing": {
+      "movingAverage": { "frames": 5, "recommended": 10 },
+      "exponentialSmoothing": { "alpha": 0.7 },
+      "kalmanFilter": "optional"
+    }
+  }
+}
+
