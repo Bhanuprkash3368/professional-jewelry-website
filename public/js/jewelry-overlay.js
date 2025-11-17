@@ -199,17 +199,22 @@ class JewelryTryOn {
     }
     
     switchJewelryType(type) {
+        console.log(`🔄 Switching jewelry type from ${this.currentJewelryType} to ${type}`);
+
         document.querySelectorAll('.tab-btn').forEach(tab => tab.classList.remove('active'));
         document.querySelector(`[data-category="${type}"]`).classList.add('active');
 
-        // Reset processing flag to allow new jewelry type to process
-        this.isProcessing = false;
+        // Clear overlay canvas immediately
+        if (this.overlayCtx) {
+            this.overlayCtx.clearRect(0, 0, this.overlayCanvas.width, this.overlayCanvas.height);
+        }
 
-        // Clear old landmarks
+        // Clear old landmarks to force re-detection
         this.detectedLandmarks = null;
         this.detectedHandLandmarks = null;
         this.detectedPoseLandmarks = null;
 
+        // Update jewelry type
         this.currentJewelryType = type;
         this.selectedJewelry = null;
         this.createJewelryGrid();
@@ -221,9 +226,9 @@ class JewelryTryOn {
                 this.selectJewelry(this.jewelryCollections[type].items[0], firstItem);
                 console.log(`✅ Auto-selected first ${type} item`);
             }
-        }, 100);
+        }, 50);
 
-        this.showStatus(`Switched to ${type}`, 'info');
+        this.showStatus(`✅ Switched to ${type}`, 'success');
     }
     
     async initializeMediaPipeModels() {
@@ -326,29 +331,36 @@ class JewelryTryOn {
     }
     
     async processVideoFrame() {
-        if (!this.stream || this.isProcessing) return;
-        
-        this.isProcessing = true;
-        
+        if (!this.stream) return;
+
+        // Don't wait for processing to complete - send frames continuously
         try {
             switch (this.currentJewelryType) {
                 case 'earrings':
                 case 'necklaces':
-                    await this.faceMesh.send({ image: this.webcam });
+                    // Send to FaceMesh without waiting
+                    this.faceMesh.send({ image: this.webcam }).catch(err => {
+                        console.error('FaceMesh error:', err);
+                    });
                     break;
                 case 'rings':
-                    await this.hands.send({ image: this.webcam });
+                    // Send to Hands without waiting
+                    this.hands.send({ image: this.webcam }).catch(err => {
+                        console.error('Hands error:', err);
+                    });
                     break;
                 case 'chains':
-                    await this.pose.send({ image: this.webcam });
+                    // Send to Pose without waiting
+                    this.pose.send({ image: this.webcam }).catch(err => {
+                        console.error('Pose error:', err);
+                    });
                     break;
             }
         } catch (error) {
             console.error('Error processing frame:', error);
         }
-        
-        this.isProcessing = false;
-        
+
+        // Always continue processing frames
         if (this.stream) {
             requestAnimationFrame(() => this.processVideoFrame());
         }
